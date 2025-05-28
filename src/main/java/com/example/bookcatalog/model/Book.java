@@ -20,5 +20,7 @@ public class Book {
     private String isbn;
     private String description;
     private String tag;
+    //0 正常 1审核中
+    private int status;
 
 }

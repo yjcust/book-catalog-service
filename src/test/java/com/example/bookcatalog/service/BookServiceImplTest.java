@@ -1,6 +1,7 @@
 package com.example.bookcatalog.service;
 
 import com.example.bookcatalog.dto.BookDTO;
+import com.example.bookcatalog.enums.BookStatusEnum;
 import com.example.bookcatalog.exception.BusinessException;
 import com.example.bookcatalog.exception.ErrorCode;
 import com.example.bookcatalog.mapper.BookMapper;
@@ -39,6 +40,21 @@ class BookServiceImplTest {
         Book result = bookService.createBook(dto);
 
         assertEquals(dto.getTitle(), result.getTitle());
+        verify(bookMapper, times(1)).insert(any(Book.class));
+    }
+
+    @Test
+    void testCreateBook_with_sensitive_wordsInput_shouldSucceed() {
+        BookDTO dto = new BookDTO();
+        dto.setTitle("Java Guide");
+        dto.setAuthor("Tom");
+        dto.setIsbn("1234567890");
+        //触发铭感词分支
+        dto.setDescription("政治");
+
+        Book result = bookService.createBook(dto);
+        //状态为待审核
+        assertEquals(BookStatusEnum.UNDER_REVIEW.getCode(), result.getStatus());
         verify(bookMapper, times(1)).insert(any(Book.class));
     }
 

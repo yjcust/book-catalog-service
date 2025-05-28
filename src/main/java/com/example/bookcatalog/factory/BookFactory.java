@@ -1,6 +1,7 @@
 package com.example.bookcatalog.factory;
 
 import com.example.bookcatalog.dto.BookDTO;
+import com.example.bookcatalog.enums.BookStatusEnum;
 import com.example.bookcatalog.model.Book;
 
 public class BookFactory {
@@ -11,6 +12,7 @@ public class BookFactory {
                 .author(dto.getAuthor())
                 .isbn(dto.getIsbn())
                 .description(dto.getDescription())
+                .status(BookStatusEnum.NORMAL.getCode())
                 .build();
 
         //考虑到不同类型的书籍可能有不同的处理方式，因此不同类型的书使用不同类型的书籍处理器进行加工。目前仅简单的加个标签
