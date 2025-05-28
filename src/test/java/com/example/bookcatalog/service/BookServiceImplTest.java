@@ -27,9 +27,7 @@ class BookServiceImplTest {
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
-        bookService = new BookServiceImpl(bookMapper);
         bookService.initObservers();
-
     }
 
     @Test
