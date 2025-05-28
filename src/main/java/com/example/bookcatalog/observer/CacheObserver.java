@@ -1,16 +1,11 @@
 package com.example.bookcatalog.observer;
 
-
 import com.example.bookcatalog.model.Book;
-import lombok.extern.slf4j.Slf4j;
 
-
-
-@Slf4j
-public class LogObserver implements BookObserver {
+public class CacheObserver implements BookObserver {
     @Override
     public void onBookUpdated(Book book) {
-        log.info("图书更新日志: {}", book);
+        // 模拟更新缓存
+        System.out.println("缓存更新：书籍 " + book.getId());
     }
 }
-

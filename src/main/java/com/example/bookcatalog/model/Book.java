@@ -19,4 +19,6 @@ public class Book {
     private String author;
     private String isbn;
     private String description;
+    private String tag;
+
 }

@@ -9,16 +9,14 @@ import java.util.List;
 
 
 public class BookUpdateNotifier {
+    private final List<BookObserver> observers = new ArrayList<>();
 
-    private final List<BookUpdateObserver> observers = new ArrayList<>();
-
-    public void register(BookUpdateObserver observer) {
+    public void register(BookObserver observer) {
         observers.add(observer);
     }
 
-    public void notifyObservers(Book updatedBook) {
-        for (BookUpdateObserver observer : observers) {
-            observer.onBookUpdated(updatedBook);
-        }
+    public void notifyObservers(Book book) {
+        observers.forEach(o -> o.onBookUpdated(book));
     }
 }
+
