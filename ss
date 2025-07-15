@@ -1,4 +1,4 @@
-diff.astextplain.textconv=astextplain
+sssfadiff.astextplain.textconv=astextplain
 filter.lfs.clean=git-lfs clean -- %f
 filter.lfs.smudge=git-lfs smudge -- %f
 filter.lfs.process=git-lfs filter-process
